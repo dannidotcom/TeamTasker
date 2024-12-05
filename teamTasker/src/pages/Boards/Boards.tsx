@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 import { Board } from "../../data/board";
@@ -8,7 +7,7 @@ import { AddOutline } from "react-ionicons";
 import AddModal from "../../components/Modals/AddModal";
 import Task from "../../components/Task";
 
-const Home = () => {
+const Boards = () => {
 	const [columns, setColumns] = useState<Columns>(Board);
 	const [modalOpen, setModalOpen] = useState(false);
 	const [selectedColumn, setSelectedColumn] = useState("");
@@ -30,10 +29,10 @@ const Home = () => {
 	return (
 		<>
 			<DragDropContext onDragEnd={(result: any) => onDragEnd(result, columns, setColumns)}>
-				<div className="w-full flex items-start justify-between px-5 pb-8 md:gap-0 gap-10">
+				<div className="flex items-start justify-between w-full gap-10 px-5 pb-8 md:gap-0">
 					{Object.entries(columns).map(([columnId, column]: any) => (
 						<div
-							className="w-full flex flex-col gap-0"
+							className="flex flex-col w-full gap-0"
 							key={columnId}
 						>
 							<Droppable
@@ -91,4 +90,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default Boards;
